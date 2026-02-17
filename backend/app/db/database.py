@@ -14,6 +14,7 @@ DATABASE_URL = "sqlite:///./n_ta.db"
 # the check same thread allows for the database to handle multi threading
 engine = create_engine(
     DATABASE_URL, connect_args={"check_same_thread": False}
+)
 
 
 # SessionLocal creates a session factory called SessionLocal
