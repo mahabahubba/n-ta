@@ -8,11 +8,14 @@ export const Register = () => {
   const [password, setPassword] = useState("");
   const [error, setError] = useState<string | null>(null);
 
+  const API_BASE = import.meta.env.VITE_API_BASE_URL;
+
   const handleRegister = async (e: React.SyntheticEvent<HTMLFormElement>) => {
     e.preventDefault();
     setError(null);
     try {
-      const res = await fetch("http://localhost:8000/api/register", {
+      // Register
+      const res = await fetch(`${API_BASE}/api/register`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, password }),
@@ -21,19 +24,23 @@ export const Register = () => {
         const data = await res.json();
         throw new Error(data.detail || "Registration failed");
       }
-      const loginRes = await fetch("http://localhost:8000/api/login", {
+
+      // Login after registration
+      const loginRes = await fetch(`${API_BASE}/api/login`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, password }),
       });
       if (!loginRes.ok) throw new Error("Login after registration failed");
       const loginData = await loginRes.json();
+
       setUser(email);
       setToken(loginData.access_token);
     } catch (err: any) {
       setError(err.message || "Registration failed");
     }
   };
+
 
   return (
     <Form onSubmit={handleRegister}>

@@ -4,7 +4,11 @@ import axios from "axios";
 
 // Create an instance with the base url of the backend
 const apiClient = axios.create({
-  baseURL: 'http://127.0.0.1:8000',
+  baseURL: import.meta.env.VITE_API_BASE_URL,
+  headers: {
+    "Content-Type": "application/json",
+  },
 });
+
 
 export default apiClient;
