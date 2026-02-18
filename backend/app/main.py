@@ -13,7 +13,10 @@ app = FastAPI(title="N-TA Backend")
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:5173"], 
+    allow_origins=[
+        "http://localhost:5173",
+        "ws://localhost:5173",   
+    ],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -32,4 +35,4 @@ models.Base.metadata.create_all(bind=engine)
 #     return {"status": "ok"}
 
 app.include_router(users.router, prefix="/api")
-app.include_router(notifications.router, prefix="/api")
+app.include_router(notifications.router)
