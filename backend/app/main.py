@@ -16,7 +16,8 @@ app.add_middleware(
     allow_origins=[
         "http://localhost:5173",
         "ws://localhost:5173",
-        "http://localhost:3000"   
+        "http://localhost:3000",
+        "https://n-ta.vercel.app"  
     ],
     allow_credentials=True,
     allow_methods=["*"],
