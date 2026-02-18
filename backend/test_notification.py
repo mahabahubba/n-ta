@@ -1,9 +1,9 @@
-# test_notifications.py
+# asyncio and websockets are used to create a simple client connection to the WebSocket server and listen for incoming notifications.
 import asyncio
 import websockets
 
 async def listen_notifications():
-    url = "ws://127.0.0.1:8000/ws/notifications"  # Make sure this matches your backend WebSocket endpoint
+    url = "ws://127.0.0.1:8000/ws/notifications" 
     async with websockets.connect(url) as websocket:
         print("Connected to notifications server. Waiting for messages...")
         try:
