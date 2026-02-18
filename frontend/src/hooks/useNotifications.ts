@@ -9,17 +9,18 @@ export const useNotifications = (token: string | null) => {
   const [notifications, setNotifications] = useState<Notification[]>([]);
 
   useEffect(() => {
-    if (!token) return; // only connect if logged in
+    if (!token) return;
 
-    const WS_BASE = import.meta.env.VITE_API_BASE_URL?.replace(/^http/, "ws");
+    const WS_BASE = import.meta.env.VITE_API_BASE_URL
+      ?.replace(/^http/, "ws")
+      ?.replace(/\/api$/, "");
     const ws = new WebSocket(`${WS_BASE}/ws/notifications`);
 
     ws.onopen = () => console.log("WebSocket connection established");
 
     ws.onmessage = (event) => {
       const id = Date.now();
-      const message = event.data;
-      setNotifications((prev) => [...prev, { id, message }]);
+      setNotifications((prev) => [...prev, { id, message: event.data }]);
 
       setTimeout(() => {
         setNotifications((prev) => prev.filter((n) => n.id !== id));
@@ -27,10 +28,11 @@ export const useNotifications = (token: string | null) => {
     };
 
     ws.onclose = () => console.log("WebSocket connection closed");
-    ws.onerror = (error) => console.error("WebSocket error:", error);
+    ws.onerror = (err) => console.error("WebSocket error:", err);
 
     return () => ws.close();
   }, [token]);
 
   return notifications;
 };
+;
