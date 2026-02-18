@@ -36,4 +36,4 @@ models.Base.metadata.create_all(bind=engine)
 #     return {"status": "ok"}
 
 app.include_router(users.router, prefix="/api")
-app.include_router(notifications.router)
+app.include_router(notifications.router, prefix="/ws")
