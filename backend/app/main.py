@@ -36,5 +36,5 @@ models.Base.metadata.create_all(bind=engine)
 # def health_check():
 #     return {"status": "ok"}
 
-app.include_router(users.router)
+app.include_router(users.router, prefix="/api")
 app.include_router(notifications.router)
