@@ -9,8 +9,8 @@ load_dotenv()
 class Settings:
     # Define the settings class to hold the configuration values for the application.
     # The values are read from the environment variables, which can be set in the .env file.
-    SECRET_KEY: str = os.getenv("SECRET_KEY")
-    ALGORITHM: str = os.getenv("ALGORITHM")
+    SECRET_KEY: str = os.getenv("SECRET_KEY","fallback-dev-secret-change-in-prod")
+    ALGORITHM: str = os.getenv("ALGORITHM","HS256")
     ACCESS_TOKEN_EXPIRE_MINUTES: int = int(os.getenv("ACCESS_TOKEN_EXPIRE_MINUTES", 60))
 
 
