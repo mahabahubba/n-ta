@@ -24,7 +24,7 @@ export const useNotifications = (token: string | null) => {
 
       setTimeout(() => {
         setNotifications((prev) => prev.filter((n) => n.id !== id));
-      }, 5000);
+      }, 10000);
     };
 
     ws.onclose = () => console.log("WebSocket connection closed");
