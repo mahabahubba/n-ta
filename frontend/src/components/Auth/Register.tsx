@@ -15,7 +15,7 @@ export const Register = () => {
     setError(null);
     try {
       // Register
-      const res = await fetch(`${API_BASE}/api/register`, {
+      const res = await fetch(`${API_BASE}/register`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, password }),
@@ -26,7 +26,7 @@ export const Register = () => {
       }
 
       // Login after registration
-      const loginRes = await fetch(`${API_BASE}/api/login`, {
+      const loginRes = await fetch(`${API_BASE}/login`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, password }),

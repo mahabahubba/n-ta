@@ -16,7 +16,7 @@ export const registerUser = async (email: string, password: string) => {
 // Makes post request for login and return response data which includes access token which is used to authenticate in the backend.
 // Needs to be in a json format to match the backend
 export const loginUser = async (email: string, password: string) => {
-    const response = await apiClient.post<AuthResponse>("/api/login", { email, password });
+    const response = await apiClient.post<AuthResponse>("/login", { email, password });
     return response.data;
 };
 

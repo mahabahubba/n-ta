@@ -1,6 +1,6 @@
 export const fetchNotifications = async (token: string) => {
   const response = await fetch(
-    `${import.meta.env.VITE_API_BASE_URL}/api/notifications`,
+    `${import.meta.env.VITE_API_BASE_URL}/notifications`,
     {
       headers: {
         Authorization: `Bearer ${token}`,
