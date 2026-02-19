@@ -142,7 +142,7 @@ npm install
 
 **2. Create a `.env.local` file in the `/frontend` directory**
 ```env
-VITE_API_BASE_URL=http://localhost:8000
+VITE_API_BASE_URL=http://localhost:8000/api
 VITE_WS_BASE_URL=ws://localhost:8000
 ```
 
