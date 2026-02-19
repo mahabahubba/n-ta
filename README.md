@@ -10,6 +10,7 @@ A full stack-application that implements secure user authentication and real tim
 - [Authentication](#authentication)
 - [Database](#database)
 - [Real-Time Notification](#real-time-notification)
+- [Tradeoffs](#other-trade-offs)
 - [Deployment](#deployment)
 - [Testing](#completion-of-the-project-testing)
 - [Getting Started](#getting-started)
@@ -52,6 +53,14 @@ WebSockets provide persistant, bu-directional communciation between client and s
 - HTTP Polling: Inefficient, high network overhead
 - Long Polling: Complex and fragile
 - Server-Sent Events: One directional only
+
+
+## Other trade offs
+- Password Hashing — `bcrypt` over `passlib`
+
+Initially, `passlib` was used for password hashing due to its simplicity and wide adoption. However, during deployment to Railway, compatibility issues arose with the version available in the production environment.
+
+**Decision:** Switched to `bcrypt` directly, which offered stable support across environments and resolved the deployment issue without sacrificing security.
 
 
 # Deployment
