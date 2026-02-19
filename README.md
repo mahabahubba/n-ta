@@ -97,6 +97,10 @@ For it to now work when it is deployed onto a live server:
 [![Deployment]](./frontend/public/LiveServer.png)
 
 
+This project uses pytest with FastAPI's TestClient for backend testing.
+pytest was chosen because it integrates naturally with FastAPI and SQLAlchemy — tests run against an isolated in-memory SQLite database, meaning they never touch the development or production database. This keeps tests fast, repeatable, and safe to run at any time.
+
+
 
 ## Getting Started
 
