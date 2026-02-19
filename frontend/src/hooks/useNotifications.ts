@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 
+// This hook establish a WebSocket connection to recieve real time notif for authenticated user.
 interface Notification {
   id: number;
   message: string;
@@ -10,7 +11,7 @@ export const useNotifications = (token: string | null) => {
 
   useEffect(() => {
     if (!token) return;
-
+// Constructing the WebSocket URL by replacing the HTTP scheme with WS and removing any trailing /api from the base URL. This allows the frontend to connect to the correct WebSocket endpoint for receiving notifications.
     const WS_BASE = import.meta.env.VITE_API_BASE_URL
       ?.replace(/^http/, "ws")
       ?.replace(/\/api$/, "");

@@ -1,1 +1,2 @@
 /// <reference types="vite/client" />
+// This file provides TypeScript type definitions for the Vite environment variables, allowing the frontend code to access and use these variables with proper type checking and autocompletion support in the development environment.
