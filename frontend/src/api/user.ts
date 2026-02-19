@@ -1,3 +1,4 @@
+// This module provides functions to interact with the user-related API endpoints, allowing the frontend to fetch user information using an authentication token.
 const API_BASE = `${import.meta.env.VITE_API_BASE_URL}`;
 
 export async function fetchMe(token: string) {
